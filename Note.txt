@@ -8,5 +8,7 @@ https://github.com/Annie-Huang/react-formik-tutorials
 
 C:\react>npx create-react-app react-formik-tutorials
 
+C:\react\react-formik-tutorials>npm install formik
+
 
 
