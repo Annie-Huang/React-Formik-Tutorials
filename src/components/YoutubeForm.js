@@ -9,14 +9,17 @@ const YoutubeForm = () => {
             name: 'Vishwas',
             email: '',
             channel: ''
+        },
+        onSubmit: values => {
+            console.log('From data', values);
         }
     });
 
-    console.log('Form values', formik.values);
+    // console.log('Form values', formik.values);
 
     return (
         <div>
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <label htmlFor='name'>Name</label>
                 <input type="text" id='name' name='name' onChange={formik.handleChange} value={formik.values.name}/>
 
@@ -26,7 +29,7 @@ const YoutubeForm = () => {
                 <label htmlFor='channel'>Channel</label>
                 <input type="text" id='channel' name='channel' onChange={formik.handleChange} value={formik.values.chanel}/>
 
-                <button>Submit</button>
+                <button type='submit'>Submit</button>
             </form>
         </div>
     );
