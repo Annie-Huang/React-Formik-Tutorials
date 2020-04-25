@@ -6,7 +6,7 @@ const YoutubeForm = () => {
     // initialValues needs to match the name field in each input
     const formik = useFormik({
         initialValues: {
-            name: '',
+            name: 'Vishwas',
             email: '',
             channel: ''
         }
