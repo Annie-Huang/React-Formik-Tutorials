@@ -11,4 +11,7 @@ C:\react>npx create-react-app react-formik-tutorials
 C:\react\react-formik-tutorials>npm install formik
 
 
-
+Simple Form:
+1. Managing the form state
+2. Handling form submission
+3. Validation and error messages
