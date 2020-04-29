@@ -1,43 +1,50 @@
 import React from 'react';
 import {useFormik} from "formik";
 
+const initialValues = {
+    name: 'Vishwas',
+    email: '',
+    channel: ''
+}
+
+const onSubmit = values => {
+    console.log('From data', values);
+}
+
+const validate = values => {
+    // values.name values.email values.channel
+    // errors.name errors.email errors.channel
+    // errors.name = 'This field is required'
+    let errors = {};
+
+    if(!values.name) {
+        errors.name = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email format'
+    }
+
+    if(!values.email) {
+        errors.email = 'Required';
+    }
+
+    if(!values.channel) {
+        errors.channel = 'Required';
+    }
+
+    return errors;
+}
+
 const YoutubeForm = () => {
 
     // initialValues needs to match the name field in each input
     const formik = useFormik({
-        initialValues: {
-            name: 'Vishwas',
-            email: '',
-            channel: ''
-        },
-        onSubmit: values => {
-            console.log('From data', values);
-        },
-        validate: values => {
-            // values.name values.email values.channel
-            // errors.name errors.email errors.channel
-            // errors.name = 'This field is required'
-            let errors = {};
-
-            if(!values.name) {
-                errors.name = 'Required';
-            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                errors.email = 'Invalid email format'
-              }
-
-            if(!values.email) {
-                errors.email = 'Required';
-            }
-
-            if(!values.channel) {
-                errors.channel = 'Required';
-            }
-
-            return errors;
-        }
+        initialValues,
+        onSubmit,
+        validate
     });
 
     // console.log('Form values', formik.values);
+    console.log('Form values', formik.errors);
 
     return (
         <div>
