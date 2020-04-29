@@ -7,6 +7,7 @@ const initialValues = {
     channel: ''
 }
 
+// You cannot get into onSubmit if your errors from validate return is not an empty object
 const onSubmit = values => {
     console.log('From data', values);
 }
@@ -19,12 +20,12 @@ const validate = values => {
 
     if(!values.name) {
         errors.name = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email format'
     }
 
     if(!values.email) {
         errors.email = 'Required';
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email format'
     }
 
     if(!values.channel) {
@@ -43,8 +44,8 @@ const YoutubeForm = () => {
         validate
     });
 
-    // console.log('Form values', formik.values);
-    console.log('Form values', formik.errors);
+    console.log('Form values', formik.values);
+    console.log('Form errors', formik.errors);
 
     return (
         <div>
