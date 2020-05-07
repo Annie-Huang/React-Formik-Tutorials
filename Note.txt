@@ -4,6 +4,7 @@ https://www.youtube.com/playlist?list=PLC3y8-rFHvwiPmFbtzEWjESkqBVDbdgGu
 https://github.com/gopinav/React-Formik-Tutorials/tree/master/react-formik-demo
 https://github.com/Annie-Huang/react-formik-tutorials
 
+https://www.npmjs.com/package/yup
 ===========================================
 
 C:\react>npx create-react-app react-formik-tutorials
@@ -15,3 +16,6 @@ Simple Form:
 1. Managing the form state
 2. Handling form submission
 3. Validation and error messages
+
+
+C:\react\react-formik-tutorials>npm install yup
