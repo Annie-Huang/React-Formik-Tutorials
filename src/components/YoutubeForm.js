@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFormik, Formik, Form, Field} from "formik";
+import {useFormik, Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -142,7 +142,35 @@ const YoutubeForm = () => {
         </Formik>
     );
 };*/
-// Use Field component
+// // Use Field component
+// const YoutubeForm = () => {
+//     return (
+//         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+//             <Form>
+//                 <div className="form-control">
+//                     <label htmlFor='name'>Name</label>
+//                     <Field type="text" id='name' name='name' />
+//                     {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+//                 </div>
+//
+//                 <div className="form-control">
+//                     <label htmlFor='email'>E-mail</label>
+//                     <Field type="text" id='email' name='email' />
+//                     {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+//                 </div>
+//
+//                 <div className="form-control">
+//                     <label htmlFor='channel'>Channel</label>
+//                     <Field type="text" id='channel' name='channel' />
+//                     {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+//                 </div>
+//
+//                 <button type='submit'>Submit</button>
+//             </Form>
+//         </Formik>
+//     );
+// };
+// Use ErrorMessage component
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -150,19 +178,19 @@ const YoutubeForm = () => {
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
                     <Field type="text" id='name' name='name' />
-                    {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+                    <ErrorMessage name='name' />
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='email'>E-mail</label>
                     <Field type="text" id='email' name='email' />
-                    {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+                    <ErrorMessage name='email' />
                 </div>
 
                 <div className="form-control">
                     <label htmlFor='channel'>Channel</label>
                     <Field type="text" id='channel' name='channel' />
-                    {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+                    <ErrorMessage name='channel' />
                 </div>
 
                 <button type='submit'>Submit</button>
@@ -170,6 +198,5 @@ const YoutubeForm = () => {
         </Formik>
     );
 };
-
 
 export default YoutubeForm;
