@@ -86,10 +86,11 @@ const validationSchema = Yup.object({
         </div>
     );
 };*/
+// Use Formik component
 const YoutubeForm = () => {
     return (
-        <Formik initialValues={initialValues} >
-            <form onSubmit={formik.handleSubmit} validationSchema={validationSchema} onSubmit={onSubmit} >
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+            <form onSubmit={formik.handleSubmit}>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
                     <input type="text" id='name' name='name' {...formik.getFieldProps('name')} />
@@ -113,5 +114,6 @@ const YoutubeForm = () => {
         </Formik>
     );
 };
+
 
 export default YoutubeForm;
