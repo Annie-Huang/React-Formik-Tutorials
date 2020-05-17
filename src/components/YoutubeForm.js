@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFormik, Formik, Form} from "formik";
+import {useFormik, Formik, Form, Field} from "formik";
 import * as Yup from 'yup';
 
 const initialValues = {
@@ -114,7 +114,7 @@ const validationSchema = Yup.object({
 //         </Formik>
 //     );
 // };
-// Use Form component
+/*// Use Form component
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -141,6 +141,35 @@ const YoutubeForm = () => {
             </Form>
         </Formik>
     );
+};*/
+// Use Field component
+const YoutubeForm = () => {
+    return (
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+            <Form>
+                <div className="form-control">
+                    <label htmlFor='name'>Name</label>
+                    <Field type="text" id='name' name='name' />
+                    {formik.touched.name && formik.errors.name ? <div className='error'>{formik.errors.name}</div> : null}
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='email'>E-mail</label>
+                    <Field type="text" id='email' name='email' />
+                    {formik.touched.email && formik.errors.email ? <div className='error'>{formik.errors.email}</div> : null}
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='channel'>Channel</label>
+                    <Field type="text" id='channel' name='channel' />
+                    {formik.touched.channel && formik.errors.channel ? <div className='error'>{formik.errors.channel}</div> : null}
+                </div>
+
+                <button type='submit'>Submit</button>
+            </Form>
+        </Formik>
+    );
 };
+
 
 export default YoutubeForm;
