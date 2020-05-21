@@ -178,7 +178,7 @@ const YoutubeForm = () => {
 //         </Formik>
 //     );
 // };
-/*// Use ErrorMessage component
+/*// Use ErrorMessage component (if the field has been visited and there is an error message existed for that field)
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
