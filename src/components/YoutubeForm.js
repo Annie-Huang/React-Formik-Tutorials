@@ -13,7 +13,8 @@ const initialValues = {
     name: '',
     email: '',
     channel: '',
-    comments: ''
+    comments: '',
+    address: ''
 }
 
 // You cannot get into onSubmit if your errors from validate return is not an empty object
@@ -206,9 +207,19 @@ const YoutubeForm = () => {
     );
 };*/
 
-// Field Revisited
-// Any additional prop in the Field component will pass through, like placeholder
-// 'as' and 'component' prop can be taking as input(default), or textarea, or select, or a customer react component as well.
+/* Field Revisited
+  1. Any additional prop in the Field component will pass through, like placeholder
+  2. 'as' and 'component' prop can be taking as input(default), or textarea, or select, or a customer react component as well.
+
+  3. Implementation of field component with the rendered props pattern
+  (if you want to use custom components in your form and you want them to be hooked into formik, this pattern will definitely come in handy. Good to know if you need to achieve something complex with formik)
+  Render props has three things:
+    - field: contains name, onBlur, onChange, value. Everything formik required to manage the state.
+    - form: the formik constant that useFormik hook use to return. Got all the properties or helper methods to modify your form in any way required.
+            errors, values, touched, handleSubmit, handleChange, handleBlur etc.
+    - meta: whether this field has been visited or not, has an error or not, value. Can be use to render your error msg.
+    (field, meta: more concerned at an individual field level.)
+*/
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -235,6 +246,24 @@ const YoutubeForm = () => {
                     <label htmlFor='comments'>Comments</label>
                     <Field as='textarea' id='comments' name='comments' />
                     {/*<Field component='textarea' id='comments' name='comments' />*/}
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='address'>Address</label>
+                    <Field name='address'>
+                        {
+                            (props) => {
+                                console.log('Render props', props);
+                                const {field, form, meta} = props;
+                                return (
+                                    <div>
+                                       <input type='text' id='address' {...field}/>
+                                       {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                    </div>
+                                )
+                            }
+                        }
+                    </Field>
                 </div>
 
                 <button type='submit'>Submit</button>
