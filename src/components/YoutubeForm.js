@@ -1,6 +1,7 @@
 import React from 'react';
 import {useFormik, Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
+import TextError from "./TextError";
 
 // const initialValues = {
 //     // name: 'Vishwas',
@@ -209,7 +210,7 @@ const YoutubeForm = () => {
 
 /* Field Revisited
   1. Any additional prop in the Field component will pass through, like placeholder
-  2. 'as' and 'component' prop can be taking as input(default), or textarea, or select, or a customer react component as well.
+  2. 'as' and 'component' prop can be taking as input(default), or textarea, or select, or a custom react component as well.
 
   3. Implementation of field component with the rendered props pattern
   (if you want to use custom components in your form and you want them to be hooked into formik, this pattern will definitely come in handy. Good to know if you need to achieve something complex with formik)
@@ -227,7 +228,8 @@ const YoutubeForm = () => {
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
                     <Field type="text" id='name' name='name' />
-                    <ErrorMessage name='name' />
+                    {/*<ErrorMessage name='name' component='div' />*/}
+                    <ErrorMessage name='name' component={TextError} />
                 </div>
 
                 <div className="form-control">
