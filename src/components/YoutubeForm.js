@@ -2,11 +2,18 @@ import React from 'react';
 import {useFormik, Formik, Form, Field, ErrorMessage} from "formik";
 import * as Yup from 'yup';
 
+// const initialValues = {
+//     // name: 'Vishwas',
+//     name: '',
+//     email: '',
+//     channel: ''
+// }
 const initialValues = {
     // name: 'Vishwas',
     name: '',
     email: '',
-    channel: ''
+    channel: '',
+    comments: ''
 }
 
 // You cannot get into onSubmit if your errors from validate return is not an empty object
@@ -170,7 +177,7 @@ const YoutubeForm = () => {
 //         </Formik>
 //     );
 // };
-// Use ErrorMessage component
+/*// Use ErrorMessage component
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -191,6 +198,43 @@ const YoutubeForm = () => {
                     <label htmlFor='channel'>Channel</label>
                     <Field type="text" id='channel' name='channel' />
                     <ErrorMessage name='channel' />
+                </div>
+
+                <button type='submit'>Submit</button>
+            </Form>
+        </Formik>
+    );
+};*/
+
+// Field Revisited
+// Any additional prop in the Field component will pass through, like placeholder
+// 'as' and 'component' prop can be taking as input(default), or textarea, or select, or a customer react component as well.
+const YoutubeForm = () => {
+    return (
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+            <Form>
+                <div className="form-control">
+                    <label htmlFor='name'>Name</label>
+                    <Field type="text" id='name' name='name' />
+                    <ErrorMessage name='name' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='email'>E-mail</label>
+                    <Field type="text" id='email' name='email' />
+                    <ErrorMessage name='email' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='channel'>Channel</label>
+                    <Field type="text" id='channel' name='channel' placeholder='Youtube channel name' />
+                    <ErrorMessage name='channel' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='comments'>Comments</label>
+                    <Field as='textarea' id='comments' name='comments' />
+                    {/*<Field component='textarea' id='comments' name='comments' />*/}
                 </div>
 
                 <button type='submit'>Submit</button>
