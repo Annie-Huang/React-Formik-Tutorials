@@ -32,6 +32,7 @@ const initialValues = {
 
 // You cannot get into onSubmit if your errors from validate return is not an empty object
 const onSubmit = values => {
+    console.log('fjeiwafjw');
     console.log('From data', values);
 }
 
@@ -191,8 +192,8 @@ const YoutubeForm = () => {
 //         </Formik>
 //     );
 // };
-/*// Use ErrorMessage component (if the field has been visited and there is an error message existed for that field)
-const YoutubeForm = () => {
+// Use ErrorMessage component (if the field has been visited and there is an error message existed for that field)
+const YoutubeForm1 = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
             <Form>
@@ -218,7 +219,7 @@ const YoutubeForm = () => {
             </Form>
         </Formik>
     );
-};*/
+};
 
 /* Field Revisited
   1. Any additional prop in the Field component will pass through, like placeholder
@@ -233,64 +234,6 @@ const YoutubeForm = () => {
     - meta: whether this field has been visited or not, has an error or not, value. Can be use to render your error msg.
     (field, meta: more concerned at an individual field level.)
 */
-// const YoutubeForm = () => {
-//     return (
-//         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
-//             <Form>
-//                 <div className="form-control">
-//                     <label htmlFor='name'>Name</label>
-//                     <Field type="text" id='name' name='name' />
-//                     {/*<ErrorMessage name='name' component='div' />*/}
-//                     <ErrorMessage name='name' component={TextError} />
-//                 </div>
-//
-//                 <div className="form-control">
-//                     <label htmlFor='email'>E-mail</label>
-//                     <Field type="text" id='email' name='email' />
-//                     {/*<ErrorMessage name='email' />*/}
-//                     <ErrorMessage name='email'>
-//                         {
-//                             (errorMsg) => <div className='error'>{errorMsg}</div>
-//                         }
-//                     </ErrorMessage>
-//                 </div>
-//
-//                 <div className="form-control">
-//                     <label htmlFor='channel'>Channel</label>
-//                     <Field type="text" id='channel' name='channel' placeholder='Youtube channel name' />
-//                     <ErrorMessage name='channel' />
-//                 </div>
-//
-//                 <div className="form-control">
-//                     <label htmlFor='comments'>Comments</label>
-//                     <Field as='textarea' id='comments' name='comments' />
-//                     {/*<Field component='textarea' id='comments' name='comments' />*/}
-//                 </div>
-//
-//                 <div className="form-control">
-//                     <label htmlFor='address'>Address</label>
-//                     <Field name='address'>
-//                         {
-//                             (props) => {
-//                                 console.log('Render props', props);
-//                                 const {field, form, meta} = props;
-//                                 return (
-//                                     <div>
-//                                         <input type='text' id='address' {...field}/>
-//                                         {meta.touched && meta.error ? <div>{meta.error}</div> : null}
-//                                     </div>
-//                                 )
-//                             }
-//                         }
-//                     </Field>
-//                 </div>
-//
-//                 <button type='submit'>Submit</button>
-//             </Form>
-//         </Formik>
-//     );
-// };
-// Nested Objects
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -343,6 +286,64 @@ const YoutubeForm = () => {
                     </Field>
                 </div>
 
+                <button type='submit'>Submit</button>
+            </Form>
+        </Formik>
+    );
+};
+// Nested Objects
+/*const YoutubeForm = () => {
+    return (
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+            <Form>
+                <div className="form-control">
+                    <label htmlFor='name'>Name</label>
+                    <Field type="text" id='name' name='name' />
+                    {/!*<ErrorMessage name='name' component='div' />*!/}
+                    <ErrorMessage name='name' component={TextError} />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='email'>E-mail</label>
+                    <Field type="text" id='email' name='email' />
+                    {/!*<ErrorMessage name='email' />*!/}
+                    <ErrorMessage name='email'>
+                        {
+                            (errorMsg) => <div className='error'>{errorMsg}</div>
+                        }
+                    </ErrorMessage>
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='channel'>Channel</label>
+                    <Field type="text" id='channel' name='channel' placeholder='Youtube channel name' />
+                    <ErrorMessage name='channel' />
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='comments'>Comments</label>
+                    <Field as='textarea' id='comments' name='comments' />
+                    {/!*<Field component='textarea' id='comments' name='comments' />*!/}
+                </div>
+
+                <div className="form-control">
+                    <label htmlFor='address'>Address</label>
+                    <Field name='address'>
+                        {
+                            (props) => {
+                                console.log('Render props', props);
+                                const {field, form, meta} = props;
+                                return (
+                                    <div>
+                                        <input type='text' id='address' {...field}/>
+                                        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                                    </div>
+                                )
+                            }
+                        }
+                    </Field>
+                </div>
+
                 <div className="form-control">
                     <label htmlFor='facebook'>Facebook profile</label>
                     <Field type='text' id='facebook' name='social.facebook' />
@@ -356,6 +357,6 @@ const YoutubeForm = () => {
             </Form>
         </Formik>
     );
-};
+};*/
 
 export default YoutubeForm;
