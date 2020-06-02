@@ -1,5 +1,5 @@
 import React from 'react';
-import {useFormik, Formik, Form, Field, ErrorMessage} from "formik";
+import {useFormik, Formik, Form, Field, ErrorMessage, FieldArray} from "formik";
 import * as Yup from 'yup';
 import TextError from "./TextError";
 
@@ -28,7 +28,8 @@ const initialValues = {
         facebook: '',
         twitter: ''
     },
-    phoneNumbers: ['', '']
+    phoneNumbers: ['', ''],
+    phNumbers: ['']
 }
 
 // You cannot get into onSubmit if your errors from validate return is not an empty object
@@ -291,7 +292,7 @@ const YoutubeForm = () => {
 //         </Formik>
 //     );
 // };
-// Nested Objects | Arrays
+// Nested Objects | Arrays | FieldArray component (dynamically add Field component)
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
@@ -357,10 +358,24 @@ const YoutubeForm = () => {
                     <label htmlFor='primaryPh'>Primary phone number</label>
                     <Field type='text' id='primaryPh' name='phoneNumbers[0]' />
                 </div>
-
                 <div className='form-control'>
                     <label htmlFor='secondaryPh'>Secondary phone number</label>
                     <Field type='text' id='secondaryPh' name='phoneNumbers[1]' />
+                </div>
+
+                <div className='form-control'>
+                    <label>List of phone numbers</label>
+                    <FieldArray name='phNumbers'>
+                        {
+                            (fieldArrayProps) => {
+                                console.log('fieldArrayProps', fieldArrayProps);
+                                const {push, remove, form} = fieldArrayProps;
+                                const {values} = form;
+                                const {phNumbers} = values;
+                                return <div>FieldArray</div>
+                            }
+                        }
+                    </FieldArray>
                 </div>
 
                 <button type='submit'>Submit</button>
