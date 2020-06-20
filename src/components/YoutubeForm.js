@@ -250,9 +250,11 @@ const validateComments = value => {
 //
 // validateOnMount: if you have a form with a lot of fields and complex validation, it doesn't make sense to run all the validation rules
 //                  even before the user has typed in a single letters. This is only suitable for a form with very few fields with simple validation
+// isDirty: indicates if at least one of the form field's value has change since it was initialized (onBlur without changing the value doesn't count)
 const YoutubeForm = () => {
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnMount>
+        // <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnMount>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {formik => {
                 console.log('Formik props', formik);
                 return (
@@ -360,7 +362,7 @@ const YoutubeForm = () => {
                             comments: true
                         })}>Visit all</button>
                         {/*isValid is true if errors is {}*/}
-                        <button type='submit' disabled={!formik.isValid}>Submit</button>
+                        <button type='submit' disabled={!(formik.dirty && formik.isValid)}>Submit</button>
                     </Form>
                 )
             }}
