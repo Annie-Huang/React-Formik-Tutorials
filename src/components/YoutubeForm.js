@@ -245,7 +245,8 @@ const validateComments = value => {
         </Formik>
     );
 };*/
-
+// When you clicks Validate comments and Validate all, even though the error is there in the form errors
+// but because form's touched field is empty, it will not show the error. Use setFieldTouched and setTouched to change it
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -346,8 +347,6 @@ const YoutubeForm = () => {
                             </FieldArray>
                         </div>
 
-                        {/*When you clicks Validate comments and Validate all, even though the error is there in the form errors*/}
-                        {/*but because form's touched field is empty, it will not show the error. Use setFieldTouched and setTouched to change it*/}
                         <button type='button' onClick={() => formik.validateField('comments')}>Validate comments</button>
                         <button type='button' onClick={() => formik.validateForm()}>Validate all</button>
                         <button type='button' onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
@@ -357,7 +356,8 @@ const YoutubeForm = () => {
                             channel: true,
                             comments: true
                         })}>Visit all</button>
-                        <button type='submit'>Submit</button>
+                        {/*isValid is true if errors is {}*/}
+                        <button type='submit' disabled={!formik.isValid}>Submit</button>
                     </Form>
                 )
             }}
