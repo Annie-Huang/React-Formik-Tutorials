@@ -27,9 +27,15 @@ const validationSchema = Yup.object({
     channel: Yup.string().required('Required!!!')
 });
 
+/*
+form.errors get populated when
+1. A change event has occurred (e.g. typing in something in the channel field.)         << can change through validateOnChange props
+2. After any blur event in the form (e.g click into the channle field and click out)    << can change through validateOnBlur props
+3. Clicks on the submit button
+*/
 const YoutubeForm = () => {
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} >
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnChange={false} validateOnBlur={false}>
             <Form>
                 <div className="form-control">
                     <label htmlFor='name'>Name</label>
@@ -105,6 +111,7 @@ const YoutubeForm = () => {
                                 const {push, remove, form} = fieldArrayProps;
                                 const {values} = form;
                                 const {phNumbers} = values;
+                                console.log('Form errors', form.errors);
                                 return <div>
                                     {
                                         phNumbers.map((phNumber, index) => (
