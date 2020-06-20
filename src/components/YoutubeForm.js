@@ -247,9 +247,12 @@ const validateComments = value => {
 };*/
 // When you clicks Validate comments and Validate all, even though the error is there in the form errors
 // but because form's touched field is empty, it will not show the error. Use setFieldTouched and setTouched to change it
+//
+// validateOnMount: if you have a form with a lot of fields and complex validation, it doesn't make sense to run all the validation rules
+//                  even before the user has typed in a single letters. This is only suitable for a form with very few fields with simple validation
 const YoutubeForm = () => {
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit} validateOnMount>
             {formik => {
                 console.log('Formik props', formik);
                 return (
