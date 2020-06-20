@@ -245,10 +245,12 @@ const validateComments = value => {
         </Formik>
     );
 };*/
+
 const YoutubeForm = () => {
     return (
         <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
             {formik => {
+                console.log('Formik props', formik);
                 return (
                     <Form>
                         <div className="form-control">
@@ -287,6 +289,7 @@ const YoutubeForm = () => {
                                     // If you update channel, the address will not keep re-rendering if you use FastField, it implement shouldComponentUpdate internally
                                     (props) => {
                                         console.log('Render props', props);
+                                        // The form below is like the formik property just under the <Formik> tag
                                         const {field, form, meta} = props;
                                         return (
                                             <div>
@@ -343,6 +346,17 @@ const YoutubeForm = () => {
                             </FieldArray>
                         </div>
 
+                        {/*When you clicks Validate comments and Validate all, even though the error is there in the form errors*/}
+                        {/*but because form's touched field is empty, it will not show the error. Use setFieldTouched and setTouched to change it*/}
+                        <button type='button' onClick={() => formik.validateField('comments')}>Validate comments</button>
+                        <button type='button' onClick={() => formik.validateForm()}>Validate all</button>
+                        <button type='button' onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
+                        <button type='button' onClick={() => formik.setTouched({
+                            name: true,
+                            email: true,
+                            channel: true,
+                            comments: true
+                        })}>Visit all</button>
                         <button type='submit'>Submit</button>
                     </Form>
                 )
