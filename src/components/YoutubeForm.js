@@ -484,7 +484,7 @@ const YoutubeForm = () => {
                             channel: true,
                             comments: true
                         })}>Visit all</button>
-                        <button type='submit' disabled={formik.isSubmitting}>Submit</button>
+                        <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
                     </Form>
                 )
             }}
