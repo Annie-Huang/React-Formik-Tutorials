@@ -39,6 +39,7 @@ const onSubmit = (values, onSubmitProps) => {
     console.log('From data', values);
     console.log('submit props', onSubmitProps);
     onSubmitProps.setSubmitting(false); // you can manually reset isSubmitting once it's submission is successfully process.
+    onSubmitProps.resetForm(); // This does not work for reload button, because state has not been cleared
 }
 
 const validationSchema = Yup.object({
