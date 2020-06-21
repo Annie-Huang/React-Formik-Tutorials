@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useFormik, Formik, Form, Field, ErrorMessage, FieldArray, FastField} from "formik";
 import * as Yup from 'yup';
 import TextError from "./TextError";
@@ -16,6 +16,21 @@ const initialValues = {
     phoneNumbers: ['', ''],
     phNumbers: ['']
 }
+
+const savedValues = {
+    name: 'Vishwas',
+    email: 'v@example.com',
+    channel: 'codevolution',
+    comments: 'Welcome to Formik',
+    address: '221b Baker Street',
+    social: {
+        facebook: '',
+        twitter: ''
+    },
+    phoneNumbers: ['', ''],
+    phNumbers: ['']
+}
+
 
 // const onSubmit = values => {
 //     console.log('From data', values);
@@ -376,8 +391,10 @@ const validateComments = value => {
 // };
 // When submit is clicked, isSubmitting is set to true, then validation kicks in, failed validation. And isSubmitting is set to false.
 const YoutubeForm = () => {
+    const [formValues, setFormValues] = useState(null);
     return (
-        <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        // <Formik initialValues={formValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+        <Formik initialValues={formValues || initialValues} validationSchema={validationSchema} onSubmit={onSubmit} enableReinitialize>
             {formik => {
                 console.log('Formik props', formik);
                 return (
@@ -484,6 +501,7 @@ const YoutubeForm = () => {
                             channel: true,
                             comments: true
                         })}>Visit all</button>
+                        <button type='button' onClick={() => setFormValues(savedValues)}>Load saved data</button>
                         <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
                     </Form>
                 )
