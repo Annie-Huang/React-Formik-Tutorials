@@ -502,6 +502,7 @@ const YoutubeForm = () => {
                             comments: true
                         })}>Visit all</button>
                         <button type='button' onClick={() => setFormValues(savedValues)}>Load saved data</button>
+                        <button type='reset'>Reset</button>
                         <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
                     </Form>
                 )
