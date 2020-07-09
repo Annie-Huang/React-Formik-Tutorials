@@ -34,3 +34,6 @@ Reusable Formik Controls:
 - DatePicker
 - Registration, Login, and Course Enrollment
 - UI Component library
+
+
+C:\react\react-formik-tutorials>npx create-react-app formik-controls-demo
