@@ -22,3 +22,15 @@ C:\react\react-formik-tutorials>npm install yup
 
 =============================
 Back up the first part into react-formik-demo folder:
+
+Reusable Formik Controls:
+- FormikContainer component
+- FormikControl component
+- Input
+- TextArea
+- Select
+- RadioButtons
+- Checkboxes
+- DatePicker
+- Registration, Login, and Course Enrollment
+- UI Component library

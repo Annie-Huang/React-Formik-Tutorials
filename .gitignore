@@ -3,6 +3,7 @@
 
 # dependencies
 /react-formik-demo/node_modules
+/formik-controls-demo/node_modules
 /.pnp
 .pnp.js
 
