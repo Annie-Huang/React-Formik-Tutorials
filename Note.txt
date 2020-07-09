@@ -37,3 +37,4 @@ Reusable Formik Controls:
 
 
 C:\react\react-formik-tutorials>npx create-react-app formik-controls-demo
+C:\react\react-formik-tutorials\formik-controls-demo>npm install formik
