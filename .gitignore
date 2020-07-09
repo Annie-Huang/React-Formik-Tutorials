@@ -2,7 +2,7 @@
 .idea
 
 # dependencies
-/node_modules
+/react-formik-demo/node_modules
 /.pnp
 .pnp.js
 
