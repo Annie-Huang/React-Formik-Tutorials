@@ -4,8 +4,9 @@ import TextError from "./TextError";
 
 /*
   Need to pass: control = 'radio', label = 'Pick one option', name = 'radioOption', options = [{key, value}]
+  The only different from RadioButton is: type='checkbox' && checked={field.value.includes(option.value)}
  */
-const RadioButton = ({label, name, options, ...rest}) => (
+const CheckboxGroup = ({label, name, options, ...rest}) => (
     <div className='form-control'>
         <label>{label}</label>
         <Field name={name} {...rest}>
@@ -18,11 +19,11 @@ const RadioButton = ({label, name, options, ...rest}) => (
                     return options.map(option => (
                         <React.Fragment key={option.key}>
                             <input
-                                type="radio"
+                                type="checkbox"
                                 id={option.value}
                                 {...field}
                                 value={option.value}
-                                checked={field.value === option.value}
+                                checked={field.value.includes(option.value)}
                             />
                             <label htmlFor={option.value}>{option.key}</label>
                         </React.Fragment>
@@ -34,4 +35,4 @@ const RadioButton = ({label, name, options, ...rest}) => (
     </div>
 );
 
-export default RadioButton;
+export default CheckboxGroup;
