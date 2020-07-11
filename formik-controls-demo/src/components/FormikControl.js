@@ -3,6 +3,7 @@ import Input from "./Input";
 import Textarea from "./Textarea";
 import Select from "./Select";
 import RadioButton from "./RadioButton";
+import CheckboxGroup from "./CheckboxGroup";
 
 const FormikControl = ({control, ...rest}) => {
     switch (control) {
@@ -15,6 +16,7 @@ const FormikControl = ({control, ...rest}) => {
         case 'radio':
             return <RadioButton {...rest} />;
         case 'checkbox':
+            return <CheckboxGroup {...rest} />;
         case 'date':
         default: return null
     }
