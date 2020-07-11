@@ -10,8 +10,12 @@ const RadioButton = ({label, name, options, ...rest}) => (
         <label>{label}</label>
         <Field name={name} {...rest}>
             {
-                ({field}) => (
-                    options.map(option => (
+                ({field}) => {
+                    // field has name, onBlur, onChange, value
+                    // But adding value={option.value} after {...field}, the value will be override to stick with option.value
+                    console.log('Field', field);
+
+                    return options.map(option => (
                         <React.Fragment key={option.key}>
                             <input
                                 type="radio"
@@ -23,7 +27,7 @@ const RadioButton = ({label, name, options, ...rest}) => (
                             <label htmlFor={option.value}>{option.key}</label>
                         </React.Fragment>
                     ))
-                )
+                }
             }
         </Field>
         <ErrorMessage name={name} component={TextError}/>
