@@ -5,6 +5,8 @@ https://github.com/gopinav/React-Formik-Tutorials/tree/master/react-formik-demo
 https://github.com/Annie-Huang/react-formik-tutorials
 
 https://www.npmjs.com/package/yup
+https://www.npmjs.com/package/react-datepicker
+https://reactdatepicker.com/
 ===========================================
 
 C:\react>npx create-react-app react-formik-tutorials
@@ -40,3 +42,4 @@ C:\react\react-formik-tutorials>npx create-react-app formik-controls-demo
 
 C:\react\react-formik-tutorials\formik-controls-demo>npm install formik
 C:\react\react-formik-tutorials\formik-controls-demo>npm install yup
+C:\react\react-formik-tutorials\formik-controls-demo>npm install react-datepicker
