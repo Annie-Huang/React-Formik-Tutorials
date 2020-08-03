@@ -9,6 +9,12 @@ const LoginForm = () => {
         password: ''
     }
 
+    /*
+        Validation:
+        - Email required
+        - Email format
+        - Password required
+     */
     const validationSchema = Yup.object({
         email: Yup.string().email('Invalid email format').required('Required'),
         password: Yup.string().required('Required'),
