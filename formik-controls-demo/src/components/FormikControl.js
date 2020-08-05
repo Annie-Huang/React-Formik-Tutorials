@@ -20,7 +20,8 @@ const FormikControl = ({control, ...rest}) => {
             return <CheckboxGroup {...rest} />;
         case 'date':
             return <DatePicker {...rest} />
-        default: return null
+        default:
+            return null
     }
 };
 
