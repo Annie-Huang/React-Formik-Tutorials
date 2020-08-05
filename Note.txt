@@ -7,6 +7,9 @@ https://github.com/Annie-Huang/react-formik-tutorials
 https://www.npmjs.com/package/yup
 https://www.npmjs.com/package/react-datepicker
 https://reactdatepicker.com/
+
+https://github.com/jquense/yup#mixedoneofarrayofvalues-arrayany-message-string--function-schema-alias-equals
+https://github.com/jquense/yup#mixedwhenkeys-string--arraystring-builder-object--value-schema-schema-schema
 ===========================================
 
 C:\react>npx create-react-app react-formik-tutorials
