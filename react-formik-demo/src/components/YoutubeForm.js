@@ -4,31 +4,31 @@ import * as Yup from 'yup';
 import TextError from "./TextError";
 
 const initialValues = {
-    name: '',
-    email: '',
-    channel: '',
-    comments: '',
-    address: '',
-    social: {
-        facebook: '',
-        twitter: ''
-    },
-    phoneNumbers: ['', ''],
-    phNumbers: ['']
+  name: '',
+  email: '',
+  channel: '',
+  comments: '',
+  address: '',
+  social: {
+    facebook: '',
+    twitter: ''
+  },
+  phoneNumbers: ['', ''],
+  phNumbers: ['']
 }
 
 const savedValues = {
-    name: 'Vishwas',
-    email: 'v@example.com',
-    channel: 'codevolution',
-    comments: 'Welcome to Formik',
-    address: '221b Baker Street',
-    social: {
-        facebook: '',
-        twitter: ''
-    },
-    phoneNumbers: ['', ''],
-    phNumbers: ['']
+  name: 'Vishwas',
+  email: 'v@example.com',
+  channel: 'codevolution',
+  comments: 'Welcome to Formik',
+  address: '221b Baker Street',
+  social: {
+    facebook: '',
+    twitter: ''
+  },
+  phoneNumbers: ['', ''],
+  phNumbers: ['']
 }
 
 
@@ -36,27 +36,27 @@ const savedValues = {
 //     console.log('From data', values);
 // }
 const onSubmit = (values, onSubmitProps) => {
-    console.log('From data', values);
-    console.log('submit props', onSubmitProps);
-    onSubmitProps.setSubmitting(false); // you can manually reset isSubmitting once it's submission is successfully process.
-    onSubmitProps.resetForm(); // This does not work for reload button, because state has not been cleared
+  console.log('From data', values);
+  console.log('submit props', onSubmitProps);
+  onSubmitProps.setSubmitting(false); // you can manually reset isSubmitting once it's submission is successfully process.
+  onSubmitProps.resetForm(); // This does not work for reload button, because state has not been cleared
 }
 
 const validationSchema = Yup.object({
-    name: Yup.string().required('Required!!!'), // Use a different string from validate
-    email: Yup.string().email('Invalid email format').required('Required!!!'),
-    channel: Yup.string().required('Required!!!')
+  name: Yup.string().required('Required!!!'), // Use a different string from validate
+  email: Yup.string().email('Invalid email format').required('Required!!!'),
+  channel: Yup.string().required('Required!!!')
 });
 
 // You will use this, e.g. when you want to render your fields based on a json that you fetch from an api call
 // Once you get the json representation of your form you iterate over the different objects building the validation function in each
 // iteration and assigning it to the validate prop on the field or the fast field component
 const validateComments = value => {
-    let error;
-    if(!value) {
-        error = 'Required';
-    }
-    return error;
+  let error;
+  if (!value) {
+    error = 'Required';
+  }
+  return error;
 }
 
 // /*
@@ -393,123 +393,125 @@ const validateComments = value => {
 
 // When submit is clicked, isSubmitting is set to true, then validation kicks in, failed validation. And isSubmitting is set to false.
 const YoutubeForm = () => {
-    const [formValues, setFormValues] = useState(null);
-    return (
-        // <Formik initialValues={formValues} validationSchema={validationSchema} onSubmit={onSubmit}>
-        <Formik initialValues={formValues || initialValues} validationSchema={validationSchema} onSubmit={onSubmit} enableReinitialize>
-            {formik => {
-                console.log('Formik props', formik);
-                return (
-                    <Form>
-                        <div className="form-control">
-                            <label htmlFor='name'>Name</label>
-                            <Field type="text" id='name' name='name' />
-                            <ErrorMessage name='name' component={TextError} />
-                        </div>
+  const [formValues, setFormValues] = useState(null);
+  return (
+    // <Formik initialValues={formValues} validationSchema={validationSchema} onSubmit={onSubmit}>
+    <Formik initialValues={formValues || initialValues} validationSchema={validationSchema} onSubmit={onSubmit}
+            enableReinitialize>
+      {formik => {
+        console.log('Formik props', formik);
+        return (
+          <Form>
+            <div className="form-control">
+              <label htmlFor='name'>Name</label>
+              <Field type="text" id='name' name='name'/>
+              <ErrorMessage name='name' component={TextError}/>
+            </div>
 
-                        <div className="form-control">
-                            <label htmlFor='email'>E-mail</label>
-                            <Field type="text" id='email' name='email' />
-                            <ErrorMessage name='email'>
-                                {
-                                    (errorMsg) => <div className='error'>{errorMsg}</div>
-                                }
-                            </ErrorMessage>
-                        </div>
+            <div className="form-control">
+              <label htmlFor='email'>E-mail</label>
+              <Field type="text" id='email' name='email'/>
+              <ErrorMessage name='email'>
+                {
+                  (errorMsg) => <div className='error'>{errorMsg}</div>
+                }
+              </ErrorMessage>
+            </div>
 
-                        <div className="form-control">
-                            <label htmlFor='channel'>Channel</label>
-                            <Field type="text" id='channel' name='channel' placeholder='Youtube channel name' />
-                            <ErrorMessage name='channel' />
-                        </div>
+            <div className="form-control">
+              <label htmlFor='channel'>Channel</label>
+              <Field type="text" id='channel' name='channel' placeholder='Youtube channel name'/>
+              <ErrorMessage name='channel'/>
+            </div>
 
-                        <div className="form-control">
-                            <label htmlFor='comments'>Comments</label>
-                            <Field as='textarea' id='comments' name='comments' validate={validateComments}/>
-                            <ErrorMessage name='comments' component={TextError}/>
-                        </div>
+            <div className="form-control">
+              <label htmlFor='comments'>Comments</label>
+              <Field as='textarea' id='comments' name='comments' validate={validateComments}/>
+              <ErrorMessage name='comments' component={TextError}/>
+            </div>
 
-                        <div className="form-control">
-                            <label htmlFor='address'>Address</label>
+            <div className="form-control">
+              <label htmlFor='address'>Address</label>
 
-                            <FastField name='address'>
-                                {
-                                    // If you update channel, the address will not keep re-rendering if you use FastField, it implement shouldComponentUpdate internally
-                                    (props) => {
-                                        console.log('Render props', props);
-                                        // The form below is like the formik property just under the <Formik> tag
-                                        const {field, form, meta} = props;
-                                        return (
-                                            <div>
-                                                <input type='text' id='address' {...field}/>
-                                                {meta.touched && meta.error ? <div>{meta.error}</div> : null}
-                                            </div>
-                                        )
-                                    }
-                                }
-                            </FastField>
-                        </div>
+              <FastField name='address'>
+                {
+                  // If you update channel, the address will not keep re-rendering if you use FastField, it implement shouldComponentUpdate internally
+                  (props) => {
+                    console.log('Render props', props);
+                    // The form below is like the formik property just under the <Formik> tag
+                    const {field, form, meta} = props;
+                    return (
+                      <div>
+                        <input type='text' id='address' {...field}/>
+                        {meta.touched && meta.error ? <div>{meta.error}</div> : null}
+                      </div>
+                    )
+                  }
+                }
+              </FastField>
+            </div>
 
-                        <div className="form-control">
-                            <label htmlFor='facebook'>Facebook profile</label>
-                            <Field type='text' id='facebook' name='social.facebook' />
-                        </div>
-                        <div className="form-control">
-                            <label htmlFor='twitter'>Twitter profile</label>
-                            <Field type='text' id='twitter' name='social.twitter' />
-                        </div>
+            <div className="form-control">
+              <label htmlFor='facebook'>Facebook profile</label>
+              <Field type='text' id='facebook' name='social.facebook'/>
+            </div>
+            <div className="form-control">
+              <label htmlFor='twitter'>Twitter profile</label>
+              <Field type='text' id='twitter' name='social.twitter'/>
+            </div>
 
-                        <div className='form-control'>
-                            <label htmlFor='primaryPh'>Primary phone number</label>
-                            <Field type='text' id='primaryPh' name='phoneNumbers[0]' />
-                        </div>
-                        <div className='form-control'>
-                            <label htmlFor='secondaryPh'>Secondary phone number</label>
-                            <Field type='text' id='secondaryPh' name='phoneNumbers[1]' />
-                        </div>
+            <div className='form-control'>
+              <label htmlFor='primaryPh'>Primary phone number</label>
+              <Field type='text' id='primaryPh' name='phoneNumbers[0]'/>
+            </div>
+            <div className='form-control'>
+              <label htmlFor='secondaryPh'>Secondary phone number</label>
+              <Field type='text' id='secondaryPh' name='phoneNumbers[1]'/>
+            </div>
 
-                        <div className='form-control'>
-                            <label>List of phone numbers</label>
-                            <FieldArray name='phNumbers'>
-                                {
-                                    (fieldArrayProps) => {
-                                        // console.log('fieldArrayProps', fieldArrayProps); // you can check other methods available in fieldArrayProps
-                                        const {push, remove, form} = fieldArrayProps;
-                                        const {values} = form;
-                                        const {phNumbers} = values;
-                                        console.log('Form errors', form.errors);
-                                        return <div>
-                                            {
-                                                phNumbers.map((phNumber, index) => (
-                                                    <div key={index}>
-                                                        <Field name={`phNumbers[${index}]`} />
-                                                        {index > 0 && <button type='button' onClick={() => remove(index)}> - </button>}
-                                                        <button type='button' onClick={() => push('')}> + </button>
-                                                    </div>
-                                                ))
-                                            }
-                                        </div>
-                                    }
-                                }
-                            </FieldArray>
-                        </div>
+            <div className='form-control'>
+              <label>List of phone numbers</label>
+              <FieldArray name='phNumbers'>
+                {
+                  (fieldArrayProps) => {
+                    // console.log('fieldArrayProps', fieldArrayProps); // you can check other methods available in fieldArrayProps
+                    const {push, remove, form} = fieldArrayProps;
+                    const {values} = form;
+                    const {phNumbers} = values;
+                    console.log('Form errors', form.errors);
+                    return <div>
+                      {
+                        phNumbers.map((phNumber, index) => (
+                          <div key={index}>
+                            <Field name={`phNumbers[${index}]`}/>
+                            {index > 0 && <button type='button' onClick={() => remove(index)}> - </button>}
+                            <button type='button' onClick={() => push('')}> +</button>
+                          </div>
+                        ))
+                      }
+                    </div>
+                  }
+                }
+              </FieldArray>
+            </div>
 
-                        <button type='button' onClick={() => formik.validateField('comments')}>Validate comments</button>
-                        <button type='button' onClick={() => formik.validateForm()}>Validate all</button>
-                        <button type='button' onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
-                        <button type='button' onClick={() => formik.setTouched({
-                            name: true,
-                            email: true,
-                            channel: true,
-                            comments: true
-                        })}>Visit all</button>
-                        <button type='button' onClick={() => setFormValues(savedValues)}>Load saved data</button>
-                        <button type='reset'>Reset</button>
-                        <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
-                    </Form>
-                )
-            }}
-        </Formik>
-    );
+            <button type='button' onClick={() => formik.validateField('comments')}>Validate comments</button>
+            <button type='button' onClick={() => formik.validateForm()}>Validate all</button>
+            <button type='button' onClick={() => formik.setFieldTouched('comments')}>Visit comments</button>
+            <button type='button' onClick={() => formik.setTouched({
+              name: true,
+              email: true,
+              channel: true,
+              comments: true
+            })}>Visit all
+            </button>
+            <button type='button' onClick={() => setFormValues(savedValues)}>Load saved data</button>
+            <button type='reset'>Reset</button>
+            <button type='submit' disabled={!formik.isValid || formik.isSubmitting}>Submit</button>
+          </Form>
+        )
+      }}
+    </Formik>
+  );
 };
 export default YoutubeForm;

@@ -7,22 +7,22 @@ import CheckboxGroup from "./CheckboxGroup";
 import DatePicker from "./DatePicker";
 
 const FormikControl = ({control, ...rest}) => {
-    switch (control) {
-        case 'input':
-            return <Input {...rest} />;
-        case 'textarea':
-            return <Textarea {...rest} />;
-        case 'select':
-            return <Select {...rest} />;
-        case 'radio':
-            return <RadioButton {...rest} />;
-        case 'checkbox':
-            return <CheckboxGroup {...rest} />;
-        case 'date':
-            return <DatePicker {...rest} />
-        default:
-            return null
-    }
+  switch (control) {
+    case 'input':
+      return <Input {...rest} />;
+    case 'textarea':
+      return <Textarea {...rest} />;
+    case 'select':
+      return <Select {...rest} />;
+    case 'radio':
+      return <RadioButton {...rest} />;
+    case 'checkbox':
+      return <CheckboxGroup {...rest} />;
+    case 'date':
+      return <DatePicker {...rest} />
+    default:
+      return null
+  }
 };
 
 export default FormikControl;
