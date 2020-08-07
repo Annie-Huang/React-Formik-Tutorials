@@ -10,6 +10,7 @@ https://reactdatepicker.com/
 
 https://github.com/jquense/yup#mixedoneofarrayofvalues-arrayany-message-string--function-schema-alias-equals
 https://github.com/jquense/yup#mixedwhenkeys-string--arraystring-builder-object--value-schema-schema-schema
+https://chakra-ui.com/
 ===========================================
 
 C:\react>npx create-react-app react-formik-tutorials
@@ -46,3 +47,4 @@ C:\react\react-formik-tutorials>npx create-react-app formik-controls-demo
 C:\react\react-formik-tutorials\formik-controls-demo>npm install formik
 C:\react\react-formik-tutorials\formik-controls-demo>npm install yup
 C:\react\react-formik-tutorials\formik-controls-demo>npm install react-datepicker
+C:\react\react-formik-tutorials\formik-controls-demo>npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
