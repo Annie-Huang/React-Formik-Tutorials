@@ -1,10 +1,22 @@
 import React from 'react';
+import {Field} from "formik";
+import FormikControl from "./FormikControl";
+import {FormErrorMessage, FormLabel} from "@chakra-ui/core";
 
-const ChakraInput = () => {
+const ChakraInput = ({label, name, ...rest}) => {
   return (
-    <div>
-      
-    </div>
+    <Field name={name}>
+      {
+        ({field, form}) => {
+          return <FormikControl>
+            <FormLabel htmlFor={name}>{label}</FormLabel>
+            <input id={name} {...rest} {...field}/>
+            <FormErrorMessage>{form.errors[name]}</FormErrorMessage>
+          </FormikControl>
+        }
+      }
+
+    </Field>
   );
 };
 
