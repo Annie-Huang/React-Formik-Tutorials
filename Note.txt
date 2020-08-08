@@ -48,3 +48,19 @@ C:\react\react-formik-tutorials\formik-controls-demo>npm install formik
 C:\react\react-formik-tutorials\formik-controls-demo>npm install yup
 C:\react\react-formik-tutorials\formik-controls-demo>npm install react-datepicker
 C:\react\react-formik-tutorials\formik-controls-demo>npm install @chakra-ui/core @emotion/core @emotion/styled emotion-theming
+
+
+Course Summary:
+Build a simple form with the useFormik Hook
+Manage the form state, handle form submissions and validations
+Formik Components - Formik, Form, Field, FastField, FieldArray, ErrorMessage
+Few handy features
+Reusable components for input, textarea, select, radio buttons, checkboxes and datepicker
+Build a user login, registration and enrollment forms
+Wire up a UI library
+
+To practice further, you can:
+Create a set of reusable formik controls with a UI library of your choice
+Add a shake animation to form controls
+Submit and load a partially filled form
+
